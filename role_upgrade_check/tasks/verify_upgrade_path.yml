@@ -4,13 +4,16 @@
   - name: Retrieve the raw informations before processing them
     uri:
       url: "https://api.openshift.com/api/upgrades_info/v1/graph?channel={{ role_upgrade_channel_name}}"
+      method: GET
+      return_content: yes
+      body_format: json
       headers:
         Content-Type: application/json
       validate_certs: "{{ role_openshift_upgrade_check_validate_certs }}"
     register: role_upgrade_info
     
   - debug:
-      msg: "{{ role_upgrade_info.json }}"
+      msg: "{{ role_upgrade_info }}"
   
   - name: Retrieve the channel list and the current version of the cluster in the raw datas
     set_fact:
