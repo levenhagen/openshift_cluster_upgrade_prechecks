@@ -1,6 +1,4 @@
 ---
-- name: Check the upgrade path for your OpenShift version
-  block:
   - name: Retrieve the raw informations before processing them
     uri:
       url: "https://api.openshift.com/api/upgrades_info/v1/graph?channel={{ role_upgrade_channel_name}}"
