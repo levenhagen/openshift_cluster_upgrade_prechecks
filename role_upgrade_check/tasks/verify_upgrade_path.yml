@@ -13,7 +13,7 @@
     register: role_upgrade_info
     
   - debug:
-      msg: "{{ role_upgrade_info.msg }}"
+      msg: "{{ role_upgrade_info.msg.cache_control }}"
   
   - name: Retrieve the channel list and the current version of the cluster in the raw datas
     set_fact:
