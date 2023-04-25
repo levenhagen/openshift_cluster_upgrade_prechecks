@@ -14,7 +14,7 @@
     
   - debug:
       msg: "{{ role_upgrade_info.json }}"
-    when: role_upgrade_info.json != -1
+    when: json in role_upgrade_info
   
   - name: Retrieve the channel list and the current version of the cluster in the raw datas
     set_fact:
