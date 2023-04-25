@@ -13,13 +13,13 @@
     register: role_upgrade_info
     
   - debug:
-      msg: "{{ role_upgrade_info }}"
+      msg: "{{ role_upgrade_info.content }}"
   
   - name: Retrieve the channel list and the current version of the cluster in the raw datas
     set_fact:
       channels_list: "{{ item.metadata['io.openshift.upgrades.graph.release.channels'] }}"
       version_list: "{{ version_list | default([]) + [item.version == role_upgrade_channel_version] }}"
-    with_items: "{{ role_upgrade_info.json.nodes }}"
+    with_items: "{{ role_upgrade_info.content.nodes }}"
     
   - name: Retrieve the index number of the starting entry corresponding to our current version
     set_fact:
